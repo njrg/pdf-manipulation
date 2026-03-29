@@ -1,6 +1,6 @@
-import PyPDF2 as pp2
+from PyPDF2 import PdfReader 
 
-r = pp2.PdfReader("annotated-pdf.pdf")
+r = PdfReader("annotated-pdf.pdf")
 p = r.pages[0]
 print(p.mediabox)
 
