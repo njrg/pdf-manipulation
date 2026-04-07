@@ -1,6 +1,6 @@
 # PDF Manipulation
 
-Small python scripts utilizing PyPDF2 to manipulate/edit pdf files.
+Small python scripts utilizing pypdf to manipulate/edit pdf files.
 
 Right now there are:
 

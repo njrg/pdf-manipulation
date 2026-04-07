@@ -1,4 +1,4 @@
-from PyPDF2 import PdfReader 
+from pypdf import PdfReader 
 
 r = PdfReader("annotated-pdf.pdf")
 p = r.pages[0]

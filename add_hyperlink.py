@@ -1,6 +1,6 @@
 import os
-from PyPDF2 import PdfReader, PdfWriter
-from PyPDF2.generic import AnnotationBuilder
+from pypdf import PdfReader, PdfWriter
+from pypdf.annotations import Link
 
 # Fill the writer with the pages you want
 pdf_path = os.path.join("./", "Raag_N-CV_sv.pdf")
@@ -27,7 +27,7 @@ annotations = [
 
 # Add the annotations (hyperlinks)
 for a in annotations:
-    annotation = AnnotationBuilder.link(rect=a["rect"], url=a["url"])
+    annotation = Link(rect=a["rect"], url=a["url"])
     writer.add_annotation(page_number=0, annotation=annotation)
 
 # Write the annotated file to disk
