@@ -1,15 +1,26 @@
-import os
+import argparse
 from pypdf import PdfReader, PdfWriter
 from pypdf.annotations import Link
 
+# Parse command line arguments for input pdf file (given as required positional
+# argument) 
+parser = argparse.ArgumentParser()
+parser.add_argument("pdf_file", help="path to pdf file")
+args = parser.parse_args()
+
+pdf_path = args.pdf_file
+# TODO: Make sure the file actually exists in the file system (use os)
+# compare old code for path construction:
+#pdf_path = os.path.join("./", "inputfile.pdf")
+
 # Fill the writer with the pages you want
-pdf_path = os.path.join("./", "Raag_N-CV_sv.pdf")
 reader = PdfReader(pdf_path)
 page = reader.pages[0]
 writer = PdfWriter()
 writer.add_page(page)
 
 # Define hyperlinks and positions
+# TODO: Read this from json input file
 annotations = [
     {
         "rect": (461, 787, 566, 798),
