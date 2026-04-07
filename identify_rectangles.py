@@ -1,11 +1,19 @@
 from pypdf import PdfReader 
 import argparse
+import os
+
+# Function to check that file given as argument acutally exists
+def existing_file(path):
+    if not os.path.isfile(path):
+        raise argparse.ArgumentTypeError(f"File not found: {path}")
+    return(path)
 
 # Give the pdf file as command line argument
 # using argparse
 parser = argparse.ArgumentParser()
-# add pdf_file as positional argument (with help-text)
-parser.add_argument("pdf_file", help="path to pdf file")
+# add pdf_file as positional argument (with help-text), type parameter calls
+# existing_file function during parsing to check that file actually exists
+parser.add_argument("pdf_file", help="path to pdf file", type=existing_file)
 args = parser.parse_args()
 
 r = PdfReader(args.pdf_file) # read pdf file given as argument

@@ -1,20 +1,24 @@
 import argparse
+import os
 from pypdf import PdfReader, PdfWriter
 from pypdf.annotations import Link
+
+# Function to check that file given as argument acutally exists
+def existing_file(path):
+    if not os.path.isfile(path):
+        raise argparse.ArgumentTypeError(f"File not found: {path}")
+    return(path)
 
 # Parse command line arguments for input pdf file (given as required positional
 # argument) 
 parser = argparse.ArgumentParser()
-parser.add_argument("pdf_file", help="path to pdf file")
+# add pdf_file as positional argument (with help-text), type parameter calls
+# existing_file function during parsing to check that file actually exists
+parser.add_argument("pdf_file", help="path to pdf file", type=existing_file)
 args = parser.parse_args()
 
-pdf_path = args.pdf_file
-# TODO: Make sure the file actually exists in the file system (use os)
-# compare old code for path construction:
-#pdf_path = os.path.join("./", "inputfile.pdf")
-
 # Fill the writer with the pages you want
-reader = PdfReader(pdf_path)
+reader = PdfReader(args.pdf_file)
 page = reader.pages[0]
 writer = PdfWriter()
 writer.add_page(page)
