@@ -37,9 +37,10 @@ if '/Annots' in p:
             # to the square dictionary variable; As the FloatObject returned by pypdf
             # above is not directly JSON-serialisable we read its values as floats in
             # a list comprehension creating a list as dictionary value for the
-            # "rect"-key
+            # "rect"-key; add url-key with placeholder string to be filled manually
             squares.append({
-                "rect": [float(v) for v in rect]
+                "rect": [float(v) for v in rect],
+                "url": "<++>"
             })
 
             # Print the information to STDOUT as well
