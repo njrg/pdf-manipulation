@@ -8,7 +8,7 @@ from pprint import pprint
 def existing_file(path):
     if not os.path.isfile(path):
         raise argparse.ArgumentTypeError(f"File not found: {path}")
-    return(path)
+    return path
 
 # Parse command line arguments for input pdf file (given as required positional
 # argument) 
@@ -17,7 +17,7 @@ parser = argparse.ArgumentParser()
 # existing_file function during parsing to check that file actually exists
 parser.add_argument("pdf_file", help="path to pdf file", type=existing_file)
 # json input file containing coordinates and corresponding links/urls, optional
-# (nargs='?') postitional argument, default value, check taht file actually exists
+# (nargs='?') positional argument, default value, check taht file actually exists
 parser.add_argument("json_file", help="path to input json file (default: \"annot_squares.json\")",
                     nargs='?', default="annot_squares.json", type=existing_file)
 args = parser.parse_args()
@@ -32,7 +32,7 @@ writer.add_page(page)
 # (containing two key-value pairs per entry, "rect" with the list-value containing
 # the four corners coordinates, and the "url" key
 with open(args.json_file, 'r') as fj:
-    annotations = json.load(fj) # load the json data into a dictionary
+    annotations = json.load(fj) # load the json data into a list of dictionaries
 
 print(f"The following hyperlinks will be added at the corresponding positions in \"{args.pdf_file}\"")
 print()

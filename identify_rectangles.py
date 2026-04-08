@@ -6,7 +6,7 @@ import json
 def existing_file(path):
     if not os.path.isfile(path):
         raise argparse.ArgumentTypeError(f"File not found: {path}")
-    return(path)
+    return path
 
 # Give the pdf file as command line argument
 # using argparse
@@ -14,7 +14,7 @@ parser = argparse.ArgumentParser()
 # add pdf_file as positional argument (with help-text), type parameter calls
 # existing_file function during parsing to check that file actually exists
 parser.add_argument("pdf_file", help="path to pdf file", type=existing_file)
-# json output file as optional (nargs='?') postitional argument with default value
+# json output file as optional (nargs='?') positional argument with default value
 parser.add_argument("json_file", help="path to output json file (default: \"annot_squares.json\")",
                     nargs='?', default="annot_squares.json")
 args = parser.parse_args()
@@ -33,7 +33,7 @@ if '/Annots' in p:
             # pypdf returns a FloatObject for \Rect with the coordinates of the
             # square, store it in the variable rect
             rect = obj.get('/Rect')
-            # Append the values of rect for each square (on each run fo the for-loop)
+            # Append the values of rect for each square (on each run of the for-loop)
             # to the square dictionary variable; As the FloatObject returned by pypdf
             # above is not directly JSON-serialisable we read its values as floats in
             # a list comprehension creating a list as dictionary value for the
