@@ -44,5 +44,10 @@ for a in annotations:
     writer.add_annotation(page_number=0, annotation=annotation)
 
 # Write the annotated file to disk
-with open("annotated-pdf.pdf", "wb") as fp:
+# Derive name of output file from input file (with "_annot" added)
+# Split input file into basename and extension
+base, ext = os.path.splitext(args.pdf_file)
+output_path = f"{base}_annot{ext}"
+
+with open(output_path, "wb") as fp:
     writer.write(fp)
