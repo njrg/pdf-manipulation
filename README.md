@@ -34,3 +34,7 @@ manual preparation/intervention to be functional.
       corresponding squares
     - The output file is written to a pdf-file with the same name as the input
       pdf-file plus `_annot`, eg. `filename_annot.pdf`
+
+## License
+
+MIT — see [LICENSE](LICENSE)
