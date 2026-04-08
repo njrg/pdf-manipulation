@@ -1,6 +1,6 @@
 from pypdf import PdfReader 
-import argparse
-import os
+import argparse, os
+import json
 
 # Function to check that file given as argument acutally exists
 def existing_file(path):
@@ -24,6 +24,7 @@ print(p.mediabox)
 if '/Annots' in p:
     for annot in p.annotations:
         obj = annot.get_object()
-        print("---")
-        print(f"Subtype: {obj.get('/Subtype')}")
-        print(f"Rect:    {obj.get('/Rect')}")
+        if obj.get('/Subtype') == '/Square':
+            print("---")
+            print(f"Subtype: {obj.get('/Subtype')}")
+            print(f"Rect:    {obj.get('/Rect')}")
