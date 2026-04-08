@@ -50,7 +50,7 @@ if '/Annots' in p:
 
 
 # Write coordinates of squares (rect) to the json output file
-with open(args.json_file, 'w') as f:
-    json.dump(squares, f, indent=4)
+with open(args.json_file, 'w') as fj:
+    json.dump(squares, fj, indent=4)
 
 print(f"\nWrote {len(squares)} square annotation(s) to {args.json_file}.")
